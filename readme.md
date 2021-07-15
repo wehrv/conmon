@@ -14,9 +14,10 @@ RUN      apt install -yq libglib2.0-dev libgpgme-dev libseccomp-dev libsystemd-d
 
 CMD     cd /root/conmon;          \
         make;                     \
+        cp -v ./bin/* /root/bin/. \
         cd /root/podman;          \
         make;                     \
         cp -v ./bin/* /root/bin/.
 EOF
 
-docker run --rm -v ${PWD}/bin:/root/bin $(basename $PWD)
+docker run --rm -v ${PWD}:/root/bin $(basename $PWD)

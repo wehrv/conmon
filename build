@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git add .
+git commit -m .
+git push
+
+docker build -t $(basename $PWD) .
+docker run --rm -v ${PWD}:/root/pkg $(basename $PWD)

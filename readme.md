@@ -12,8 +12,8 @@ RUN      apt update
 RUN      apt install -yq libglib2.0-dev
 
 CMD      make ; \
-         cp -v /root/app/bin/* /root/pkg/.
+         cp -v /root/app/bin/* /root/bin/.
 EOF
 
 
-docker run --rm -v /usr/include/linux/seccomp:/usr/include/linux/seccomp -v ${PWD}/bin:/root/bin $(basename $PWD)
+docker run --rm -v /usr/include/linux/seccomp.h:/usr/include/linux/seccomp.h -v ${PWD}/bin:/root/bin $(basename $PWD)

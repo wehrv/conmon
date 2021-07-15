@@ -12,10 +12,10 @@ RUN      git clone https://github.com/containers/podman.git
 RUN      apt update
 RUN      apt install -yq libglib2.0-dev libgpgme-dev libseccomp-dev libsystemd-dev runc
 
-CMD     cd /root/seccomp ; \
-        make ; \
-        cd /root/podman ; \
-        make; \
+CMD     cd /root/conmon;          \
+        make;                     \
+        cd /root/podman;          \
+        make;                     \
         cp -v ./bin/* /root/bin/.
 EOF
 

@@ -16,4 +16,4 @@ CMD      make ; \
 EOF
 
 
-docker run --rm -v /usr/include/linux/seccomp.h:/usr/include/linux/seccomp.h -v ${PWD}/bin:/root/bin $(basename $PWD)
+docker run --rm -v /usr/include/linux/seccomp.h:/usr/include/linux/seccomp.h -v ${PWD}/bin:/root/bin $(basename $PWD) /bin/bash

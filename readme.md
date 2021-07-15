@@ -12,7 +12,7 @@ RUN      apt update
 RUN      apt install -yq libglib2.0-dev libseccomp.dev runc
 
 CMD      make ; \
-         cp -v /root/app/bin/* /root/bin/.
+         cp -v ./bin/* /root/bin/.
 EOF
 
 docker run --rm -v ${PWD}/bin:/root/bin $(basename $PWD)

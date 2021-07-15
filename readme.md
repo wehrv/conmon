@@ -12,12 +12,8 @@ RUN      git clone https://github.com/containers/podman.git
 RUN      apt update
 RUN      apt install -yq libglib2.0-dev libgpgme-dev libseccomp-dev libsystemd-dev runc
 
-CMD     cd /root/conmon;          \
-        make;                     \
-        cp -rv ./bin/* /root/bin/. \
-        cd /root/podman;          \
-        make;                     \
-        cp -rv ./bin/* /root/bin/.
+CMD     cd /root/conmon; make; cp -rv ./bin/* /root/bin; \
+        cd /root/podman; make; cp -rv ./bin/* /root/bin/.
 EOF
 
 docker run --rm -v ${PWD}:/root/bin $(basename $PWD)

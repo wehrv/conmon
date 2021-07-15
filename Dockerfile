@@ -7,7 +7,7 @@ FROM     golang
 WORKDIR  /root/app
 ENV      DEBIAN_FRONTEND noninteractive
 RUN      apt update
-#RUN      apt install -y
+RUN      apt install -yq libglib2.0-dev
 COPY     --from=0 /root/app/ .
 RUN      make
 

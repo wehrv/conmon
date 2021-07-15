@@ -5,14 +5,18 @@ git push
 
 cat <<- 'EOF' | docker build -t $(basename ${PWD}) -
 FROM     golang
-WORKDIR  /root/conmon
+WORKDIR  /root
 ENV      DEBIAN_FRONTEND noninteractive
-RUN      git clone https://github.com/containers/conmon.git .
+RUN      git clone https://github.com/containers/conmon.git
+RUN      git clone https://github.com/containers/podman.git
 RUN      apt update
-RUN      apt install -yq libglib2.0-dev libseccomp.dev runc
+RUN      apt install -yq libglib2.0-dev libgpgme-dev libseccomp-dev libsystemd-dev runc
 
-CMD      make ; \
-         cp -v ./bin/* /root/bin/.
+CMD     cd /root/seccomp ; \
+        make ; \
+        cd /root/podman ; \
+        make; \
+        cp -v ./bin/* /root/bin/.
 EOF
 
 docker run --rm -v ${PWD}/bin:/root/bin $(basename $PWD)
